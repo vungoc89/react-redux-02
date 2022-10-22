@@ -1,6 +1,7 @@
 
 import { INCREMENT, DECREMENT,FETCH_USER_REQUEST,FETCH_USER_SUCCESS,FETCH_USER_ERROR,
-  CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_ERROR  } from './types';
+  CREATE_USER_REQUEST, CREATE_USER_SUCCESS, CREATE_USER_ERROR, 
+  DELETE_USER_SUCCESS  } from './types';
 import axios from 'axios';
 
 export const increaseCounter = () => {
@@ -60,7 +61,7 @@ export const fetchUsersError = () => {
   }
 // =================================================
 // Cac parameters email, password, username => xem o ham handleCreateNewUserAPI trong file homeController.js trong backend
-export const createNewUser = (email, password, username) => {
+export const createNewUserRedux = (email, password, username) => {
   return async(dispatch, getState) => {
     dispatch(createUsersRequest());
     try{
@@ -93,3 +94,26 @@ export const createUsersError = () => {
       type: CREATE_USER_ERROR
     }
   }
+
+  // =================================================
+  export const deleteUserRedux = (id) => {
+    return async (dispatch, getState) => {
+      try {
+        let res = await axios.post(`http://localhost:8080/users/delete/${id}`);
+        if(res &&  res.data.errCode === 0){
+          dispatch(deleteUsersSuccess()); 
+          dispatch(fetchAllUser()); 
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+    
+export const deleteUsersSuccess = (data) => {
+  return {
+    type: DELETE_USER_SUCCESS,
+    
+  }
+}

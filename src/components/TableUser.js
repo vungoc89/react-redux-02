@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import {fetchAllUser} from '../action/actions';
+import {fetchAllUser, deleteUserRedux} from '../action/actions';
 
 const TableUser = (props) => {
 
@@ -31,7 +31,8 @@ const TableUser = (props) => {
       }, []);
 
       const handleDeleteUser = (user) => {
-        console.log(user); 
+        // console.log(user); 
+        dispatch(deleteUserRedux(user.id)); 
       }
     return (
         <>

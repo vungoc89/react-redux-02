@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { createNewUser } from '../action/actions';
+import { createNewUserRedux } from '../action/actions';
 const FormAddNew = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -15,7 +15,7 @@ const FormAddNew = (props) => {
 
     const handleCreateNewUSer = () => {
         // alert('me');
-        dispatch(createNewUser(email, password, username)); 
+        dispatch(createNewUserRedux(email, password, username)); 
         setEmail('');
         setPassword('');
         setUsername(''); 
