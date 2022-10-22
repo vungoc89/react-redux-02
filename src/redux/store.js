@@ -5,7 +5,7 @@
 // npm install --save-exact redux-thunk@2.4.1
 // npm install --save-exact redux-bootstrap@2.2.1
 // npm install --save-exact bootstrap@5.1.3
-import { createStore, applyMiddleware } from 'redux';
+import  {createStore, applyMiddleware} from 'redux';
 import thunkMiddleware from 'redux-thunk'; 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
